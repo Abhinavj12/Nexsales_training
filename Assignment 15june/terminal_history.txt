@@ -1,0 +1,39 @@
+git init
+git remote add origin https://github.com/Abhinavj12/Movie_Food
+git remote -v
+git branch
+git status
+git add  favourite.txt
+git commit -m "This is my First commit"
+git status
+git branch
+git branch -m main
+git branch
+git push origin main
+git branch foods
+git switch foods
+git branch
+git add favourite.txt
+git commit -m "Adding favourite food content in food branch"
+git status
+git switch main 
+git branch movies
+git switch movies
+git add favourite.txt
+git commit -m "This is my 2nd coomit ,by adding fav movies content in movies branch"
+git foods
+git switch foods
+git switch movies
+git switch main
+git branch
+git push origin foods
+git push origin movies
+git branch
+git merge foods
+git merge movies
+git add favourite.txt
+git commit -m "Resolved merge conflict and combined foods and movies"
+git push origin main
+git log --oneline --graph --all
+git log --oneline --graph --all > output.txt
+doskey /history > terminal_history.txt

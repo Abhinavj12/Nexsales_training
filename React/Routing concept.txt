@@ -1,0 +1,36 @@
+Routing
+Pages
+Component
+
+how to connect then 
+Control
+
+Button->click->Redirect to any page
+ How which  page reload
+
+Imagin navbar
+home menu 
+
+step 1:react rouete rdom
+
+whole application routing
+
+for that
+
+browser router->Componet
+
+step 2:  <App />
+
+Now we have to creates routes..that will make in App.jsx
+
+All routes are in  <Routes> </Routes>
+
+ <Route path="/home" elements={<Home></Home>}> </Route>
+
+path-> Kaunse path
+elemnst which pagws'
+
+In navabar link ke liye
+
+nested routes 
+dynamic routes

@@ -1,0 +1,17 @@
+.career-objective {
+    margin-bottom: 30px;
+}
+
+.career-objective h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #555;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.career-objective p {
+    font-size: 14px;
+    line-height: 1.5;
+}

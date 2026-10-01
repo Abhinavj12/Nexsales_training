@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { getStudents, getStudById, createStud, updateStud, deleteStud} from "../controllers/studentController.js";
+import { validateStudent } from "../middleware/validateStudent.js";
+const router = Router();
+router.get("/",getStudents);
+router.get("/:id",getStudById);
+router.post("/",validateStudent,createStud);
+router.put("/:id",updateStud);
+router.delete("/:id",deleteStud);
+export default router;

@@ -1,0 +1,688 @@
+What is Docker?
+
+Its something which is used to deployment
+
+Layer Property of image
+
+delete a container
+
+read abt docker 
+more iamge container 
+after lunch
+
+
+undersatning image layer
+
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\WINDOWS\system32> docker run -d -p 80:80 nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+f340c1b7c1d6: Pull complete
+a44b5c8be616: Pull complete
+6310eb16bf42: Pull complete
+956faab5efb3: Pull complete
+02fc02c4ab8d: Pull complete
+07db7bf2649b: Pull complete
+c12f394dea35: Pull complete
+25202a7045eb: Download complete
+76f27c02d218: Download complete
+Digest: sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d7c4
+Status: Downloaded newer image for nginx:latest
+9e0744034ee101ac882c0734ec4775e161a7ad51fb7abae974998185bf21fde7
+PS C:\WINDOWS\system32> docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                 NAMES
+9e0744034ee1   nginx     "/docker-entrypoint.…"   4 minutes ago   Up 4 minutes   0.0.0.0:80->80/tcp, [::]:80->80/tcp   hungry_golick
+PS C:\WINDOWS\system32> docker run -d -p 80:80 nginx
+2196a39cccc2b6a88977e95fba7ce68639af3cdab6d06b3e1353fbf042173318
+
+What's next:
+    Debug this container error with Gordon → docker ai "help me fix this container error"
+docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint admiring_galois (b1d2bf3cff4ef25245e24e7422bff5bef68d03f4feb734b21fd76b5d0adfa764): Bind for 0.0.0.0:80 failed: port is already allocated
+
+Run 'docker run --help' for more information
+PS C:\WINDOWS\system32> docker run -d -p 81:80 nginx
+bad039c28467f4e5cf70490316ab2a009984d32c6f36ce2e8ffab9c4e351b8b0
+PS C:\WINDOWS\system32> docker stop bad039c28467f4e5cf70490316ab2a009984d32c6f36ce2e8ffab9c4e351b8b0
+bad039c28467f4e5cf70490316ab2a009984d32c6f36ce2e8ffab9c4e351b8b0
+PS C:\WINDOWS\system32> docker images
+                                                                                                    i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   5dd0d3e6e255       25.9kB         9.49kB    U
+nginx:latest         05b8cb60c354        253MB         69.2MB    U
+PS C:\WINDOWS\system32> Docker run --name my-hello-world hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\WINDOWS\system32> docker run -d -p 80:80 --name student-web nginx
+998e56816a3374cb9a3d10d216ecf9f7d96d950ecfe4c0992b35d4799e5550a9
+
+What's next:
+    Debug this container error with Gordon → docker ai "help me fix this container error"
+docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint student-web (5b60678d9275f60393978000270a14c661904de59b6136c65969df3f8a550558): Bind for 0.0.0.0:80 failed: port is already allocated
+
+Run 'docker run --help' for more information
+PS C:\WINDOWS\system32> docker run -d -p 8080:80 --name student-web nginx
+
+What's next:
+    Debug this container error with Gordon → docker ai "help me fix this container error"
+docker: Error response from daemon: Conflict. The container name "/student-web" is already in use by container "998e56816a3374cb9a3d10d216ecf9f7d96d950ecfe4c0992b35d4799e5550a9". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+PS C:\WINDOWS\system32> docker rm student-web
+student-web
+PS C:\WINDOWS\system32> docker run -d -p 8080:80 --name student-web nginx
+d0c62e6b049baa0ac4292570fb38c4fb7a4e3ce2fd332f4a34418796d0641ef3
+PS C:\WINDOWS\system32> docker images
+                                                                                                    i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   5dd0d3e6e255       25.9kB         9.49kB    U
+nginx:latest         05b8cb60c354        253MB         69.2MB    U
+PS C:\WINDOWS\system32> docker history nginx
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+05b8cb60c354   4 days ago    CMD ["nginx" "-g" "daemon off;"]                0B        buildkit.dockerfile.v0
+<missing>      4 days ago    STOPSIGNAL SIGQUIT                              0B        buildkit.dockerfile.v0
+<missing>      4 days ago    EXPOSE map[80/tcp:{}]                           0B        buildkit.dockerfile.v0
+<missing>      4 days ago    ENTRYPOINT ["/docker-entrypoint.sh"]            0B        buildkit.dockerfile.v0
+<missing>      4 days ago    COPY 30-tune-worker-processes.sh /docker-ent…   16.4kB    buildkit.dockerfile.v0
+<missing>      4 days ago    COPY 20-envsubst-on-templates.sh /docker-ent…   12.3kB    buildkit.dockerfile.v0
+<missing>      4 days ago    COPY 15-local-resolvers.envsh /docker-entryp…   12.3kB    buildkit.dockerfile.v0
+<missing>      4 days ago    COPY 10-listen-on-ipv6-by-default.sh /docker…   12.3kB    buildkit.dockerfile.v0
+<missing>      4 days ago    COPY docker-entrypoint.sh / # buildkit          8.19kB    buildkit.dockerfile.v0
+<missing>      4 days ago    RUN /bin/sh -c set -x     && groupadd --syst…   95.9MB    buildkit.dockerfile.v0
+<missing>      4 days ago    ENV DYNPKG_RELEASE=1~trixie                     0B        buildkit.dockerfile.v0
+<missing>      4 days ago    ENV PKG_RELEASE=1~trixie                        0B        buildkit.dockerfile.v0
+<missing>      4 days ago    ENV ACME_VERSION=0.4.1                          0B        buildkit.dockerfile.v0
+<missing>      4 days ago    ENV NJS_RELEASE=1~trixie                        0B        buildkit.dockerfile.v0
+<missing>      4 days ago    ENV NJS_VERSION=1.0.1                           0B        buildkit.dockerfile.v0
+<missing>      4 days ago    ENV NGINX_VERSION=1.31.5                        0B        buildkit.dockerfile.v0
+<missing>      4 days ago    LABEL maintainer=NGINX Docker Maintainers <d…   0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago   # debian.sh --arch 'amd64' out/ 'trixie' '@1…   87.5MB    debuerreotype 0.17
+PS C:\WINDOWS\system32> docker history hello-world
+IMAGE          CREATED        CREATED BY                SIZE      COMMENT
+5dd0d3e6e255   5 months ago   CMD ["/hello"]            0B        buildkit.dockerfile.v0
+<missing>      5 months ago   COPY hello / # buildkit   16.4kB    buildkit.dockerfile.v0
+PS C:\WINDOWS\system32> docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+d0c62e6b049b   nginx     "/docker-entrypoint.…"   2 minutes ago    Up 2 minutes    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   student-web
+9e0744034ee1   nginx     "/docker-entrypoint.…"   24 minutes ago   Up 15 minutes   0.0.0.0:80->80/tcp, [::]:80->80/tcp       hungry_golick
+PS C:\WINDOWS\system32> docker ps -a
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS                        PORTS                                     NAMES
+d0c62e6b049b   nginx         "/docker-entrypoint.…"   3 minutes ago    Up 3 minutes                  0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   student-web
+fa263785ff00   hello-world   "/hello"                 6 minutes ago    Exited (0) 6 minutes ago                                                my-hello-world
+bad039c28467   nginx         "/docker-entrypoint.…"   18 minutes ago   Exited (137) 14 minutes ago                                             gifted_lewin
+2196a39cccc2   nginx         "/docker-entrypoint.…"   19 minutes ago   Created                                                                 admiring_galois
+9e0744034ee1   nginx         "/docker-entrypoint.…"   24 minutes ago   Up 15 minutes                 0.0.0.0:80->80/tcp, [::]:80->80/tcp       hungry_golick
+17c1e155f1a3   hello-world   "/hello"                 29 minutes ago   Exited (0) 29 minutes ago                                               relaxed_sutherland
+d74bc28df0e2   hello-world   "/hello"                 41 minutes ago   Exited (0) 41 minutes ago                                               admiring_hopper
+PS C:\WINDOWS\system32> docker rm student-web
+Error response from daemon: cannot remove container "student-web": container is running: stop the container before removing or force remove
+PS C:\WINDOWS\system32> docker stop student-web
+student-web
+PS C:\WINDOWS\system32> docker rm student-web
+student-web
+PS C:\WINDOWS\system32> docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                 NAMES
+9e0744034ee1   nginx     "/docker-entrypoint.…"   27 minutes ago   Up 18 minutes   0.0.0.0:80->80/tcp, [::]:80->80/tcp   hungry_golick
+PS C:\WINDOWS\system32> docker images
+                                                                                                    i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   5dd0d3e6e255       25.9kB         9.49kB    U
+nginx:latest         05b8cb60c354        253MB         69.2MB    U
+PS C:\WINDOWS\system32> docker rmi hello-world
+Error response from daemon: conflict: unable to delete hello-world:latest (must be forced) - container d74bc28df0e2 is using its referenced image 5dd0d3e6e255
+PS C:\WINDOWS\system32> docker rm d74bc28df0e2
+d74bc28df0e2
+PS C:\WINDOWS\system32> docker rmi hello-world
+Error response from daemon: conflict: unable to delete hello-world:latest (must be forced) - container 17c1e155f1a3 is using its referenced image 5dd0d3e6e255
+PS C:\WINDOWS\system32> docker rm 17c1e155f1a3
+17c1e155f1a3
+CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O    PIDS
+9e0744034ee1   hungry_golick   0.00%     4.746MiB / 3.717GiB   0.12%     3.22kB / 1.44kB   0B / 4.1kB   5
+
+PS C:\WINDOWS\system32>  cd ~
+PS C:\Users\jaisw> mkdir docker-demo
+
+
+    Directory: C:\Users\jaisw
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07-09-2026     13:19                docker-demo
+
+
+PS C:\Users\jaisw> cd docker-demo
+PS C:\Users\jaisw\docker-demo> pwd
+
+Path
+----
+C:\Users\jaisw\docker-demo
+
+
+PS C:\Users\jaisw\docker-demo> nano index.html
+nano : The term 'nano' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ nano index.html
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (nano:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\jaisw\docker-demo> notepad Dockerfile
+PS C:\Users\jaisw\docker-demo> FROM nginx
+>>
+>> COPY index.html /usr/share/nginx/html/index.html
+At line:1 char:1
++ FROM nginx
++ ~~~~
+The 'from' keyword is not supported in this version of the language.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ReservedKeywordNotAllowed
+
+PS C:\Users\jaisw\docker-demo> ^O^C
+PS C:\Users\jaisw\docker-demo> docker build -t my-web-app .
+[+] Building 3.0s (1/1) FINISHED                                                                    docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.2s
+ => => transferring dockerfile: 2B                                                                                  0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+What's next:
+    Debug this build failure with Gordon → docker ai "help me fix this build failure"
+PS C:\Users\jaisw\docker-demo> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE          ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:latest   05b8cb60c354        253MB         69.2MB    U
+PS C:\Users\jaisw\docker-demo> notepad Dockerfile
+PS C:\Users\jaisw\docker-demo> dir
+
+
+    Directory: C:\Users\jaisw\docker-demo
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        07-09-2026     13:27             62 Dockerfile.txt
+-a----        07-09-2026     13:22            201 index.html
+
+
+PS C:\Users\jaisw\docker-demo> Rename-Item Dockerfile.txt Dockerfile
+PS C:\Users\jaisw\docker-demo> dir
+
+
+    Directory: C:\Users\jaisw\docker-demo
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        07-09-2026     13:27             62 Dockerfile
+-a----        07-09-2026     13:22            201 index.html
+
+
+PS C:\Users\jaisw\docker-demo> docker build -t my-web-app .
+[+] Building 1.4s (7/7) FINISHED                                                                    docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.1s
+ => => transferring dockerfile: 99B                                                                                 0.1s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                     0.1s
+ => [internal] load .dockerignore                                                                                   0.1s
+ => => transferring context: 2B                                                                                     0.0s
+ => [internal] load build context                                                                                   0.1s
+ => => transferring context: 240B                                                                                   0.0s
+ => [1/2] FROM docker.io/library/nginx:latest@sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d  0.3s
+ => => resolve docker.io/library/nginx:latest@sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d  0.1s
+ => [2/2] COPY index.html /usr/share/nginx/html/index.html                                                          0.1s
+ => exporting to image                                                                                              0.5s
+ => => exporting layers                                                                                             0.1s
+ => => exporting manifest sha256:3ca53e8b8dedbb4b66fe2aa784525eda2ad7e4ef17f38be04114ef84f5642c36                   0.1s
+ => => exporting config sha256:0c477b24e46b906d69f80595192107f46c656da7b5af5e27a4d40e4fc157fcd4                     0.1s
+ => => exporting attestation manifest sha256:4b62bc551de74220aab0550aedb4651e07deb5c892c4f47948e958e6dae11d85       0.0s
+ => => exporting manifest list sha256:7643b966645f8f7c20635b730ce05bb9546e9337a83dbaddd01a19493669694b              0.0s
+ => => naming to docker.io/library/my-web-app:latest                                                                0.0s
+ => => unpacking to docker.io/library/my-web-app:latest                                                             0.1s
+PS C:\Users\jaisw\docker-demo> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-web-app:latest   7643b966645f        250MB         66.3MB
+nginx:latest        05b8cb60c354        253MB         69.2MB    U
+PS C:\Users\jaisw\docker-demo> docker run -d -p 8080:80 --name my-web-container my-web-app
+090bd988cf39edb5415d4a6ce10e2d1bdf5163f588ee39fbca237ae4cd2d2c67
+PS C:\Users\jaisw\docker-demo> docker build -t my-web-app .
+[+] Building 0.7s (7/7) FINISHED                                                                    docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.0s
+ => => transferring dockerfile: 99B                                                                                 0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                     0.0s
+ => [internal] load .dockerignore                                                                                   0.0s
+ => => transferring context: 2B                                                                                     0.0s
+ => [internal] load build context                                                                                   0.0s
+ => => transferring context: 235B                                                                                   0.0s
+ => CACHED [1/2] FROM docker.io/library/nginx:latest@sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b65  0.1s
+ => => resolve docker.io/library/nginx:latest@sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d  0.1s
+ => [2/2] COPY index.html /usr/share/nginx/html/index.html                                                          0.0s
+ => exporting to image                                                                                              0.3s
+ => => exporting layers                                                                                             0.1s
+ => => exporting manifest sha256:4d8b538adcf86d45ee1057a1afd4eaefe5e574cb3657151923e1fcaa687c2ba4                   0.0s
+ => => exporting config sha256:7aa06ad5574002992d23cdec2c539255be68e7bbe8e2c2a4019ac46a4bfe5164                     0.0s
+ => => exporting attestation manifest sha256:f58b1adc3eda11d005c0cba3c357d90c09321ffe7547a05003c15593b597a58b       0.0s
+ => => exporting manifest list sha256:7c30828a3175bb9f97f47e345022bd995b80034a4ca9f71cc173f977acb96e73              0.0s
+ => => naming to docker.io/library/my-web-app:latest                                                                0.0s
+ => => unpacking to docker.io/library/my-web-app:latest                                                             0.1s
+PS C:\Users\jaisw\docker-demo> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-web-app:latest   7c30828a3175        250MB         66.3MB
+nginx:latest        05b8cb60c354        253MB         69.2MB    U
+PS C:\Users\jaisw\docker-demo> docker run -d -p 8080:80 --name my-web-container my-web-app
+
+What's next:
+    Debug this container error with Gordon → docker ai "help me fix this container error"
+docker: Error response from daemon: Conflict. The container name "/my-web-container" is already in use by container "090bd988cf39edb5415d4a6ce10e2d1bdf5163f588ee39fbca237ae4cd2d2c67". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+PS C:\Users\jaisw\docker-demo> docker run -d -p 8081:80 --name my-web-container my-web-app
+
+What's next:
+    Debug this container error with Gordon → docker ai "help me fix this container error"
+docker: Error response from daemon: Conflict. The container name "/my-web-container" is already in use by container "090bd988cf39edb5415d4a6ce10e2d1bdf5163f588ee39fbca237ae4cd2d2c67". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+PS C:\Users\jaisw\docker-demo> docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                                     NAMES
+090bd988cf39   7643b966645f   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-web-container
+9e0744034ee1   nginx          "/docker-entrypoint.…"   About an hour ago    Up 51 minutes       0.0.0.0:80->80/tcp, [::]:80->80/tcp       hungry_golick
+PS C:\Users\jaisw\docker-demo> docker rm my-web-container
+Error response from daemon: cannot remove container "my-web-container": container is running: stop the container before removing or force remove
+PS C:\Users\jaisw\docker-demo> docker  stop my-web-container
+my-web-container
+PS C:\Users\jaisw\docker-demo> docker rm my-web-container
+my-web-container
+PS C:\Users\jaisw\docker-demo> docker run -d -p 8081:80 --name my-web-container my-web-app
+8ead8fe958ad26144f3266d7616a7726b6694622528f41aa292f726667021ae3
+PS C:\Users\jaisw\docker-demo> docker ps -a
+CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS             PORTS                                     NAMES
+8ead8fe958ad   my-web-app   "/docker-entrypoint.…"   33 minutes ago   Up 33 minutes      0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   my-web-container
+9e0744034ee1   nginx        "/docker-entrypoint.…"   2 hours ago      Up About an hour   0.0.0.0:80->80/tcp, [::]:80->80/tcp       hungry_golick
+PS C:\Users\jaisw\docker-demo> docker ps
+CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS             PORTS                                     NAMES
+8ead8fe958ad   my-web-app   "/docker-entrypoint.…"   33 minutes ago   Up 33 minutes      0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   my-web-container
+9e0744034ee1   nginx        "/docker-entrypoint.…"   2 hours ago      Up About an hour   0.0.0.0:80->80/tcp, [::]:80->80/tcp       hungry_golick
+PS C:\Users\jaisw\docker-demo> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-web-app:latest   7c30828a3175        250MB         66.3MB    U
+nginx:latest        05b8cb60c354        253MB         69.2MB    U
+PS C:\Users\jaisw\docker-demo> cd ~
+PS C:\Users\jaisw> docker run --name=base-container -ti ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+f3db1cd94078: Pull complete
+06e9d71331fb: Pull complete
+f79afc4bbefe: Download complete
+Digest: sha256:2260313b31c8c011cd2eebe728008efac1b3982be73eb71348ea2648d2c0e09b
+Status: Downloaded newer image for ubuntu:latest
+root@1904474b8026:/# apt update && apt install -y nodejs
+Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+Get:3 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [212 kB]
+Get:4 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+Get:5 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+Get:6 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [11.2 kB]
+Get:7 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [578 kB]
+Get:8 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [489 kB]
+Get:9 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
+Get:10 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1874 kB]
+Get:11 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
+Get:12 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
+Get:13 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [338 kB]
+Get:14 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [502 kB]
+Get:15 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [743 kB]
+Get:16 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [14.3 kB]
+Get:17 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3306 B]
+Fetched 26.0 MB in 1min 1s (427 kB/s)
+24 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Installing:
+  nodejs
+
+Installing dependencies:
+  ca-certificates  libicu78       libsimdjson29  node-acorn             node-corepack   node-minimatch  node-xtend
+  libada-url0-3    libllhttp9.3   libsimdutf31   node-balanced-match    node-debug      node-ms         nodejs-doc
+  libbrotli1       libnghttp2-14  libsqlite3-0   node-brace-expansion   node-llhttp     node-semver     openssl
+  libcares2        libnode127     libuv1t64      node-cjs-module-lexer  node-lru-cache  node-undici
+
+Suggested packages:
+  npm
+
+Summary:
+  Upgrading: 0, Installing: 28, Removing: 0, Not Upgrading: 24
+  Download size: 39.5 MB
+  Space needed: 151 MB / 1024 GB available
+
+Get:1 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 openssl amd64 3.5.5-1ubuntu3.5 [1243 kB]
+Get:2 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 ca-certificates all 20260601~26.04.1 [139 kB]
+Get:3 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 libsqlite3-0 amd64 3.46.1-9ubuntu0.2 [719 kB]
+Get:4 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 libnghttp2-14 amd64 1.68.0-2ubuntu0.2 [71.0 kB]
+Get:5 http://archive.ubuntu.com/ubuntu resolute/main amd64 libuv1t64 amd64 1.51.0-2ubuntu1 [103 kB]
+Get:6 http://archive.ubuntu.com/ubuntu resolute/main amd64 libsimdutf31 amd64 8.0.0-1 [147 kB]
+Get:7 http://archive.ubuntu.com/ubuntu resolute/universe amd64 libada-url0-3 amd64 3.4.3-1 [241 kB]
+Get:8 http://archive.ubuntu.com/ubuntu resolute/main amd64 libbrotli1 amd64 1.2.0-3build1 [343 kB]
+Get:9 http://archive.ubuntu.com/ubuntu resolute/main amd64 libcares2 amd64 1.34.6-1 [102 kB]
+Get:10 http://archive.ubuntu.com/ubuntu resolute/main amd64 libicu78 amd64 78.2-2ubuntu1 [11.5 MB]
+Get:11 http://archive.ubuntu.com/ubuntu resolute/universe amd64 libllhttp9.3 amd64 9.3.3~really9.3.0+~cs12.11.8-3build1 [30.3 kB]
+Get:12 http://archive.ubuntu.com/ubuntu resolute/universe amd64 libsimdjson29 amd64 4.2.4-1 [82.1 kB]
+Get:13 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-corepack all 0.24.0-5build1 [761 kB]
+Get:14 http://archive.ubuntu.com/ubuntu resolute/universe amd64 nodejs amd64 22.22.1+dfsg+~cs22.19.15-1ubuntu1 [367 kB]
+Get:15 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-xtend all 4.0.2-3 [3902 B]
+Get:16 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-acorn all 8.16.0+ds+~cs25.18.7-4 [121 kB]
+Get:17 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-cjs-module-lexer all 1.2.3+dfsg-1 [32.1 kB]
+Get:18 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-balanced-match all 2.0.0-1 [4910 B]
+Get:19 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-brace-expansion all 2.0.1+~1.1.0-2 [8172 B]
+Get:20 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-minimatch all 9.0.3-6 [78.0 kB]
+Get:21 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-ms all 2.1.3+~cs0.7.31-3 [5738 B]
+Get:22 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-debug all 4.4.3+~4.1.13-1 [16.8 kB]
+Get:23 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-lru-cache all 10.0.1-3 [61.9 kB]
+Get:24 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-semver all 7.6.1+~7.5.8-2 [45.2 kB]
+Get:25 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-llhttp all 9.3.3~really9.3.0+~cs12.11.8-3build1 [159 kB]
+Get:26 http://archive.ubuntu.com/ubuntu resolute/universe amd64 node-undici all 7.18.2+dfsg+~cs3.2.0-1build1 [394 kB]
+Get:27 http://archive.ubuntu.com/ubuntu resolute/universe amd64 libnode127 amd64 22.22.1+dfsg+~cs22.19.15-1ubuntu1 [16.2 MB]
+Get:28 http://archive.ubuntu.com/ubuntu resolute/universe amd64 nodejs-doc all 22.22.1+dfsg+~cs22.19.15-1ubuntu1 [6633 kB]
+Fetched 39.5 MB in 1min 45s (378 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79, <STDIN> line 28.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 28.)
+debconf: falling back to frontend: Teletype
+Preconfiguring packages ...
+Selecting previously unselected package openssl.
+(Reading database ... 7724 files and directories currently installed.)
+Preparing to unpack .../00-openssl_3.5.5-1ubuntu3.5_amd64.deb ...
+Unpacking openssl (3.5.5-1ubuntu3.5) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../01-ca-certificates_20260601~26.04.1_all.deb ...
+Unpacking ca-certificates (20260601~26.04.1) ...
+Selecting previously unselected package libsqlite3-0:amd64.
+Preparing to unpack .../02-libsqlite3-0_3.46.1-9ubuntu0.2_amd64.deb ...
+Unpacking libsqlite3-0:amd64 (3.46.1-9ubuntu0.2) ...
+Selecting previously unselected package libnghttp2-14:amd64.
+Preparing to unpack .../03-libnghttp2-14_1.68.0-2ubuntu0.2_amd64.deb ...
+Unpacking libnghttp2-14:amd64 (1.68.0-2ubuntu0.2) ...
+Selecting previously unselected package libuv1t64:amd64.
+Preparing to unpack .../04-libuv1t64_1.51.0-2ubuntu1_amd64.deb ...
+Unpacking libuv1t64:amd64 (1.51.0-2ubuntu1) ...
+Selecting previously unselected package libsimdutf31:amd64.
+Preparing to unpack .../05-libsimdutf31_8.0.0-1_amd64.deb ...
+Unpacking libsimdutf31:amd64 (8.0.0-1) ...
+Selecting previously unselected package libada-url0-3:amd64.
+Preparing to unpack .../06-libada-url0-3_3.4.3-1_amd64.deb ...
+Unpacking libada-url0-3:amd64 (3.4.3-1) ...
+Selecting previously unselected package libbrotli1:amd64.
+Preparing to unpack .../07-libbrotli1_1.2.0-3build1_amd64.deb ...
+Unpacking libbrotli1:amd64 (1.2.0-3build1) ...
+Selecting previously unselected package libcares2:amd64.
+Preparing to unpack .../08-libcares2_1.34.6-1_amd64.deb ...
+Unpacking libcares2:amd64 (1.34.6-1) ...
+Selecting previously unselected package libicu78:amd64.
+Preparing to unpack .../09-libicu78_78.2-2ubuntu1_amd64.deb ...
+Unpacking libicu78:amd64 (78.2-2ubuntu1) ...
+Selecting previously unselected package libllhttp9.3.
+Preparing to unpack .../10-libllhttp9.3_9.3.3~really9.3.0+~cs12.11.8-3build1_amd64.deb ...
+Unpacking libllhttp9.3 (9.3.3~really9.3.0+~cs12.11.8-3build1) ...
+Selecting previously unselected package libsimdjson29:amd64.
+Preparing to unpack .../11-libsimdjson29_4.2.4-1_amd64.deb ...
+Unpacking libsimdjson29:amd64 (4.2.4-1) ...
+Selecting previously unselected package node-corepack.
+Preparing to unpack .../12-node-corepack_0.24.0-5build1_all.deb ...
+Unpacking node-corepack (0.24.0-5build1) ...
+Selecting previously unselected package nodejs.
+Preparing to unpack .../13-nodejs_22.22.1+dfsg+~cs22.19.15-1ubuntu1_amd64.deb ...
+Unpacking nodejs (22.22.1+dfsg+~cs22.19.15-1ubuntu1) ...
+Selecting previously unselected package node-xtend.
+Preparing to unpack .../14-node-xtend_4.0.2-3_all.deb ...
+Unpacking node-xtend (4.0.2-3) ...
+Selecting previously unselected package node-acorn.
+Preparing to unpack .../15-node-acorn_8.16.0+ds+~cs25.18.7-4_all.deb ...
+Unpacking node-acorn (8.16.0+ds+~cs25.18.7-4) ...
+Selecting previously unselected package node-cjs-module-lexer.
+Preparing to unpack .../16-node-cjs-module-lexer_1.2.3+dfsg-1_all.deb ...
+Unpacking node-cjs-module-lexer (1.2.3+dfsg-1) ...
+Selecting previously unselected package node-balanced-match.
+Preparing to unpack .../17-node-balanced-match_2.0.0-1_all.deb ...
+Unpacking node-balanced-match (2.0.0-1) ...
+Selecting previously unselected package node-brace-expansion.
+Preparing to unpack .../18-node-brace-expansion_2.0.1+~1.1.0-2_all.deb ...
+Unpacking node-brace-expansion (2.0.1+~1.1.0-2) ...
+Selecting previously unselected package node-minimatch.
+Preparing to unpack .../19-node-minimatch_9.0.3-6_all.deb ...
+Unpacking node-minimatch (9.0.3-6) ...
+Selecting previously unselected package node-ms.
+Preparing to unpack .../20-node-ms_2.1.3+~cs0.7.31-3_all.deb ...
+Unpacking node-ms (2.1.3+~cs0.7.31-3) ...
+Selecting previously unselected package node-debug.
+Preparing to unpack .../21-node-debug_4.4.3+~4.1.13-1_all.deb ...
+Unpacking node-debug (4.4.3+~4.1.13-1) ...
+Selecting previously unselected package node-lru-cache.
+Preparing to unpack .../22-node-lru-cache_10.0.1-3_all.deb ...
+Unpacking node-lru-cache (10.0.1-3) ...
+Selecting previously unselected package node-semver.
+Preparing to unpack .../23-node-semver_7.6.1+~7.5.8-2_all.deb ...
+Unpacking node-semver (7.6.1+~7.5.8-2) ...
+Selecting previously unselected package node-llhttp.
+Preparing to unpack .../24-node-llhttp_9.3.3~really9.3.0+~cs12.11.8-3build1_all.deb ...
+Unpacking node-llhttp (9.3.3~really9.3.0+~cs12.11.8-3build1) ...
+Selecting previously unselected package node-undici.
+Preparing to unpack .../25-node-undici_7.18.2+dfsg+~cs3.2.0-1build1_all.deb ...
+Unpacking node-undici (7.18.2+dfsg+~cs3.2.0-1build1) ...
+Selecting previously unselected package libnode127:amd64.
+Preparing to unpack .../26-libnode127_22.22.1+dfsg+~cs22.19.15-1ubuntu1_amd64.deb ...
+Unpacking libnode127:amd64 (22.22.1+dfsg+~cs22.19.15-1ubuntu1) ...
+Selecting previously unselected package nodejs-doc.
+Preparing to unpack .../27-nodejs-doc_22.22.1+dfsg+~cs22.19.15-1ubuntu1_all.deb ...
+Unpacking nodejs-doc (22.22.1+dfsg+~cs22.19.15-1ubuntu1) ...
+Setting up node-lru-cache (10.0.1-3) ...
+Setting up libbrotli1:amd64 (1.2.0-3build1) ...
+Setting up libsqlite3-0:amd64 (3.46.1-9ubuntu0.2) ...
+Setting up libuv1t64:amd64 (1.51.0-2ubuntu1) ...
+Setting up libnghttp2-14:amd64 (1.68.0-2ubuntu0.2) ...
+Setting up node-cjs-module-lexer (1.2.3+dfsg-1) ...
+Setting up libicu78:amd64 (78.2-2ubuntu1) ...
+Setting up libsimdutf31:amd64 (8.0.0-1) ...
+Setting up libsimdjson29:amd64 (4.2.4-1) ...
+Setting up node-balanced-match (2.0.0-1) ...
+Setting up node-brace-expansion (2.0.1+~1.1.0-2) ...
+Setting up libcares2:amd64 (1.34.6-1) ...
+Setting up libllhttp9.3 (9.3.3~really9.3.0+~cs12.11.8-3build1) ...
+Setting up nodejs-doc (22.22.1+dfsg+~cs22.19.15-1ubuntu1) ...
+Setting up libada-url0-3:amd64 (3.4.3-1) ...
+Setting up node-minimatch (9.0.3-6) ...
+Setting up node-xtend (4.0.2-3) ...
+Setting up openssl (3.5.5-1ubuntu3.5) ...
+Setting up ca-certificates (20260601~26.04.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+debconf: falling back to frontend: Teletype
+Updating certificates in /etc/ssl/certs...
+121 added, 0 removed; done.
+Setting up node-corepack (0.24.0-5build1) ...
+Setting up node-debug (4.4.3+~4.1.13-1) ...
+Setting up node-llhttp (9.3.3~really9.3.0+~cs12.11.8-3build1) ...
+Setting up node-acorn (8.16.0+ds+~cs25.18.7-4) ...
+Setting up node-undici (7.18.2+dfsg+~cs3.2.0-1build1) ...
+Setting up libnode127:amd64 (22.22.1+dfsg+~cs22.19.15-1ubuntu1) ...
+Setting up nodejs (22.22.1+dfsg+~cs22.19.15-1ubuntu1) ...
+update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/js.1.gz because associated file /usr/share/man/man1/nodejs.1.gz (of link group js) does not exist
+Setting up node-ms (2.1.3+~cs0.7.31-3) ...
+Setting up node-semver (7.6.1+~7.5.8-2) ...
+Processing triggers for libc-bin (2.43-2ubuntu2.3) ...
+Processing triggers for ca-certificates (20260601~26.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+root@1904474b8026:/# node -e 'console.log("Hello World")'
+Hello World
+root@1904474b8026:/#
+
+
+---------------------------------
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\WINDOWS\system32> docker ps
+CONTAINER ID   IMAGE        COMMAND                  CREATED             STATUS             PORTS                                     NAMES
+1904474b8026   ubuntu       "/bin/bash"              2 minutes ago       Up 2 minutes                                                 base-container
+8ead8fe958ad   my-web-app   "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   my-web-container
+9e0744034ee1   nginx        "/docker-entrypoint.…"   2 hours ago         Up 2 hours         0.0.0.0:80->80/tcp, [::]:80->80/tcp       hungry_golick
+PS C:\WINDOWS\system32> docker history ubuntu
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+2260313b31c8   3 weeks ago   umoci raw add-layer --image /home/buildd/roc…   12.3kB    Add rock control metadata
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set annotations
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set labels
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set default PATH for bare-based rock
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set default commands
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set entrypoint
+<missing>      3 weeks ago   umoci raw add-layer --image /home/buildd/roc…   115MB
+PS C:\WINDOWS\system32> docker container commit -m "Add Node" base-conatiner node-base
+Error response from daemon: No such container: base-conatiner
+PS C:\WINDOWS\system32> docker container commit -m "Add Node" base-container node-base
+sha256:7e4c1678c5ddc4aa850ba9003afa498862abd58074c53fcad42978730791ee19
+PS C:\WINDOWS\system32> docker history ubuntu
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+2260313b31c8   3 weeks ago   umoci raw add-layer --image /home/buildd/roc…   12.3kB    Add rock control metadata
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set annotations
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set labels
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set default PATH for bare-based rock
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set default commands
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set entrypoint
+<missing>      3 weeks ago   umoci raw add-layer --image /home/buildd/roc…   115MB
+PS C:\WINDOWS\system32> docker images
+                                                                                                    i Info →   U  In Use
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-web-app:latest   7c30828a3175        250MB         66.3MB    U
+nginx:latest        05b8cb60c354        253MB         69.2MB    U
+node-base:latest    7e4c1678c5dd        409MB          116MB
+ubuntu:latest       2260313b31c8        160MB         45.3MB    U
+PS C:\WINDOWS\system32> docker history node-base
+IMAGE          CREATED              CREATED BY                                      SIZE      COMMENT
+7e4c1678c5dd   About a minute ago   /bin/bash                                       177MB     Add Node
+2260313b31c8   3 weeks ago          umoci raw add-layer --image /home/buildd/roc…   12.3kB    Add rock control metadata
+<missing>      3 weeks ago          umoci config --image /home/buildd/rockcraft-…   0B        Set annotations
+<missing>      3 weeks ago          umoci config --image /home/buildd/rockcraft-…   0B        Set labels
+<missing>      3 weeks ago          umoci config --image /home/buildd/rockcraft-…   0B        Set default PATH for bare-based rock
+<missing>      3 weeks ago          umoci config --image /home/buildd/rockcraft-…   0B        Set default commands
+<missing>      3 weeks ago          umoci config --image /home/buildd/rockcraft-…   0B        Set entrypoint
+<missing>      3 weeks ago          umoci raw add-layer --image /home/buildd/roc…   115MB
+PS C:\WINDOWS\system32> docker history ubuntu
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+2260313b31c8   3 weeks ago   umoci raw add-layer --image /home/buildd/roc…   12.3kB    Add rock control metadata
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set annotations
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set labels
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set default PATH for bare-based rock
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set default commands
+<missing>      3 weeks ago   umoci config --image /home/buildd/rockcraft-…   0B        Set entrypoint
+<missing>      3 weeks ago   umoci raw add-layer --image /home/buildd/roc…   115MB
+PS C:\WINDOWS\system32> docker run node-base node -e "console.log('hello again')"
+hello again
+PS C:\WINDOWS\system32> docker images
+                                                                                                    i Info →   U  In Use
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-web-app:latest   7c30828a3175        250MB         66.3MB    U
+nginx:latest        05b8cb60c354        253MB         69.2MB    U
+node-base:latest    7e4c1678c5dd        409MB          116MB    U
+ubuntu:latest       2260313b31c8        160MB         45.3MB    U
+PS C:\WINDOWS\system32> docker image inspect nginx:latest
+[
+    {
+        "Id": "sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d7c4",
+        "RepoTags": [
+            "nginx:latest"
+        ],
+        "RepoDigests": [
+            "nginx@sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d7c4"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-02T21:04:32.341062318Z",
+        "Config": {
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.31.5",
+                "NJS_VERSION=1.0.1",
+                "NJS_RELEASE=1~trixie",
+                "ACME_VERSION=0.4.1",
+                "PKG_RELEASE=1~trixie",
+                "DYNPKG_RELEASE=1~trixie"
+            ],
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 66343926,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:411a86676185cb54d695a805b238194a64e9b77e0c723f3802fbb87d333ea0b3",
+                "sha256:c15ef26de71544aca3c736287ee14390c8f51ed8bf4378c124ed220e5842001e",
+                "sha256:f5d2fb355c28552b6b3bb47196b15f7ca524f6d900945603756f1e6b145d09c9",
+                "sha256:3034d61d34feafac5a86a9e32ce0810fdd126502e33b6049041f687d67236b7a",
+                "sha256:f6999c63aea7f4bf3189e4ddf7e87a8d94114debac1f489cbd9b320c333232d5",
+                "sha256:e57b0ed3bcf232c6b603b67c6923c60bbb10ecb3d505426645428aad12d78cd7",
+                "sha256:5b5886b183743530727ea858eee99fe502b72c98dc97688da24a6fd394d55b40"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-07T07:00:15.471491066Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:05b8cb60c354a44ab824ea6e7dc69b46d50762cdbe728a347a5b656e6fb3d7c4",
+            "size": 10229
+        },
+        "Identity": {
+            "Pull": [
+                {
+                    "Repository": "docker.io/library/nginx"
+                }
+            ]
+        }
+    }
+]
+PS C:\WINDOWS\system32>
+
+

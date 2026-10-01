@@ -1,0 +1,32 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.0",
+  "main": "app/server.js",
+  "scripts": {
+    "dev": "node --watch app/server.js",
+    "start": "node app/server.js"
+  },
+  "dependencies": {
+    "@ecommerce/ecommerce-data-model": "file:../ecommerce-data-model",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.1",
+    "cors": "^2.8.6",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.2.0",
+    "nodemailer": "^9.0.5",
+    "pdfkit": "^0.19.1",
+    "razorpay": "^2.9.8",
+    "sequelize": "^6.37.8",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
+}

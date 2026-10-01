@@ -1,0 +1,511 @@
+[{
+  "route": "/api/v1/health",
+  "method": "get",
+  "action": "health",
+  "controller": "../components/health/controllers/health-controller.js",
+  "middlewareNameList": [
+    "validateJsonContentType"
+  ]
+},
+{
+    "route": "/api/v1/auth/register",
+    "method": "post",
+    "action": "registerUser",
+    "controller": "../components/auth/controllers/auth-controller.js",
+    "middlewareNameList": [
+      "validateJsonContentType"
+    ]
+  },
+  {
+  "route": "/api/v1/auth/verify-email",
+  "method": "get",
+  "action": "verifyUserEmail",
+  "controller": "../components/auth/controllers/auth-controller.js",
+  "middlewareNameList": []
+},
+{
+  "route": "/api/v1/auth/login",
+  "method": "post",
+  "action": "loginUser",
+  "controller": "../components/auth/controllers/auth-controller.js",
+  "middlewareNameList": [
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/auth/me",
+  "method": "get",
+  "action": "getCurrentUser",
+  "controller": "../components/auth/controllers/auth-controller.js",
+  "middlewareNameList": [
+    "authenticate"
+  ]
+},
+{
+  "route": "/api/v1/auth/admin-test",
+  "method": "get",
+  "action": "getAdminTest",
+  "controller": "../components/auth/controllers/auth-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/auth/reset-password",
+  "method": "post",
+  "action": "resetPassword",
+  "controller": "../components/auth/controllers/auth-controller.js",
+  "middlewareNameList": []
+},
+{
+  "route": "/api/v1/auth/forgot-password",
+  "method": "post",
+  "action": "forgotPassword",
+  "controller": "../components/auth/controllers/auth-controller.js",
+  "middlewareNameList": [
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/users/me",
+  "method": "get",
+  "action": "getProfile",
+  "controller": "../components/user/controllers/user-controller.js",
+  "middlewareNameList": [
+    "authenticate"
+  ]
+},
+{
+  "route": "/api/v1/users/me",
+  "method": "patch",
+  "action": "updateProfile",
+  "controller": "../components/user/controllers/user-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/users/me/password",
+  "method": "patch",
+  "action": "changePassword",
+  "controller": "../components/user/controllers/user-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/categories",
+  "method": "POST",
+  "action": "createCategory",
+  "controller": "../components/category/controllers/category-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/categories",
+  "method": "GET",
+  "action": "getCategories",
+  "controller": "../components/category/controllers/category-controller.js",
+  "middlewareNameList": []
+},{
+  "route": "/api/v1/categories/:id",
+  "method": "GET",
+  "action": "getCategoryById",
+  "controller": "../components/category/controllers/category-controller.js",
+  "middlewareNameList": []
+},
+{
+  "route": "/api/v1/categories/:id",
+  "method": "PATCH",
+  "action": "updateCategory",
+  "controller": "../components/category/controllers/category-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/categories/:id",
+  "method": "DELETE",
+  "action": "deleteCategory",
+  "controller": "../components/category/controllers/category-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/products",
+  "method": "POST",
+  "action": "createProduct",
+  "controller": "../components/product/controllers/product-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/products",
+  "method": "GET",
+  "action": "getProducts",
+  "controller": "../components/product/controllers/product-controller.js",
+  "middlewareNameList": []
+},
+{
+  "route": "/api/v1/products/:id",
+  "method": "GET",
+  "action": "getProductById",
+  "controller": "../components/product/controllers/product-controller.js",
+  "middlewareNameList": []
+},
+{
+  "route": "/api/v1/products/:id",
+  "method": "PATCH",
+  "action": "updateProduct",
+  "controller": "../components/product/controllers/product-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "validateJsonContentType"
+  ]
+},{
+  "route": "/api/v1/products/:id",
+  "method": "DELETE",
+  "action": "deleteProduct",
+  "controller": "../components/product/controllers/product-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/products/:id/images",
+  "method": "POST",
+  "action": "uploadProductImage",
+  "controller": "../components/product/controllers/product-image-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "uploadProductImage"
+  ]
+},
+{
+  "route": "/api/v1/products/:productId/images/:imageId",
+  "method": "DELETE",
+  "action": "deleteProductImage",
+  "controller": "../components/product/controllers/product-image-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/products/:productId/images/:imageId",
+  "method": "PATCH",
+  "action": "replaceProductImage",
+  "controller": "../components/product/controllers/product-image-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "uploadProductImage"
+  ]
+},
+{
+  "route": "/api/v1/cart",
+  "method": "GET",
+  "action": "getMyCart",
+  "controller": "../components/cart/controllers/cart-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/cart/items",
+  "method": "POST",
+  "action": "addToCart",
+  "controller": "../components/cart/controllers/cart-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/cart/items/:itemId",
+  "method": "PATCH",
+  "action": "updateCartItem",
+  "controller": "../components/cart/controllers/cart-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/cart/items/:itemId",
+  "method": "DELETE",
+  "action": "removeCartItem",
+  "controller": "../components/cart/controllers/cart-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/cart",
+  "method": "DELETE",
+  "action": "clearCart",
+  "controller": "../components/cart/controllers/cart-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/orders",
+  "method": "POST",
+  "action": "createOrder",
+  "controller": "../components/order/controllers/order-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/orders",
+  "method": "GET",
+  "action": "getMyOrders",
+  "controller": "../components/order/controllers/order-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/orders/:orderId",
+  "method": "GET",
+  "action": "getMyOrderById",
+  "controller": "../components/order/controllers/order-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/admin/orders",
+  "method": "GET",
+  "action": "getAllOrders",
+  "controller": "../components/order/controllers/order-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/admin/orders/:orderId/status",
+  "method": "PATCH",
+  "action": "updateOrderStatus",
+  "controller": "../components/order/controllers/order-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/orders/:orderId/payment",
+  "method": "POST",
+  "action": "createPayment",
+  "controller": "../components/payment/controllers/payment-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/orders/:orderId/payment",
+  "method": "GET",
+  "action": "getMyPayment",
+  "controller": "../components/payment/controllers/payment-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/payments/verify",
+  "method": "POST",
+  "action": "verifyPayment",
+  "controller": "../components/payment/controllers/payment-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["USER"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "route": "/api/v1/payments/webhook",
+  "method": "POST",
+  "action": "handleRazorpayWebhook",
+  "controller": "../components/payment/controllers/payment-webhook-controller.js",
+  "middlewareNameList": []
+},
+{
+  "route": "/api/v1/reports/orders/pdf",
+  "method": "GET",
+  "action": "getOrderHistoryPdf",
+  "controller": "../components/report/controllers/report-controller.js",
+  "middlewareNameList": ["authenticate"]
+},
+{
+  "route": "/api/v1/reports/orders/csv",
+  "method": "GET",
+  "action": "getOrderHistoryCsv",
+  "controller": "../components/report/controllers/report-controller.js",
+  "middlewareNameList": ["authenticate"]
+},
+{
+  "route": "/api/v1/admin/reports/orders/pdf",
+  "method": "GET",
+  "action": "getAdminOrderHistoryPdf",
+  "controller": "../components/report/controllers/report-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "route": "/api/v1/admin/reports/orders/csv",
+  "method": "GET",
+  "action": "getAdminOrderHistoryCsv",
+  "controller": "../components/report/controllers/report-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "method": "POST",
+  "route": "/api/v1/admin/admins",
+  "controller": "../components/auth/controllers/auth-controller",
+  "action": "createAdminUser",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+},
+{
+  "method": "PATCH",
+  "route": "/api/v1/admin/users/:userId/block",
+  "controller": "../components/user/controllers/user-controller",
+  "action": "updateUserBlockStatus",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    },
+    "validateJsonContentType"
+  ]
+},
+{
+  "method": "GET",
+  "route": "/api/v1/admin/users",
+  "action": "getAllUsers",
+  "controller": "../components/user/controllers/user-controller.js",
+  "middlewareNameList": [
+    "authenticate",
+    {
+      "name": "authorize",
+      "args": ["ADMIN"]
+    }
+  ]
+}
+]
