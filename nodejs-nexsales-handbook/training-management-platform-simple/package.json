@@ -1,0 +1,19 @@
+{
+    "name": "training-management-platform-simple",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "install:all": "npm install --prefix training-management-data-model && npm install --prefix training-management-api",
+        "dev": "npm run dev --prefix training-management-api",
+        "start": "npm run start --prefix training-management-api",
+        "db:migrate": "npm run db:migrate --prefix training-management-data-model",
+        "db:migrate:status": "npm run db:migrate:status --prefix training-management-data-model",
+        "db:migrate:undo": "npm run db:migrate:undo --prefix training-management-data-model",
+        "db:migrate:undo:all": "npm run db:migrate:undo:all --prefix training-management-data-model",
+        "db:seed": "npm run db:seed --prefix training-management-data-model",
+        "db:seed:undo": "npm run db:seed:undo --prefix training-management-data-model"
+    },
+    "engines": {
+        "node": ">=24"
+    }
+}

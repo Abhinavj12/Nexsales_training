@@ -1,0 +1,26 @@
+{
+  "name": "module-05-student-api-drizle",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+  "dev": "nodemon src/server.js",
+  "start": "node src/server.js",
+  "db:generate": "drizzle-kit generate",
+  "db:migrate": "drizzle-kit migrate",
+  "db:studio": "drizzle-kit studio"
+},
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.10",
+    "nodemon": "^3.1.14"
+  }
+}

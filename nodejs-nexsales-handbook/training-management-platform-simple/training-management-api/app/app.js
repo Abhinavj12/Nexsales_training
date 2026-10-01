@@ -1,0 +1,14 @@
+const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
+const loadRoutes = require("./configs/route-config");
+const notFound = require("./middleware/not-found");
+const errorHandler = require("./middleware/error-handler");
+const app = express();
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+loadRoutes(app);
+app.use(notFound);
+app.use(errorHandler);
+module.exports = app;

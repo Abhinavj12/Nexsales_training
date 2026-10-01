@@ -1,0 +1,100 @@
+[
+    {
+        "route": "/api/v1/health",
+        "method": "get",
+        "action": "getHealth",
+        "controller": "../components/health/controllers/health-controller.js",
+        "middlewareNameList": []
+    },
+    {
+        "route": "/api/v1/departments",
+        "method": "get",
+        "action": "getDepartments",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": ["validatePaginationQuery"]
+    },
+    {
+        "route": "/api/v1/departments/:departmentId",
+        "method": "get",
+        "action": "getDepartment",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": []
+    },
+    {
+        "route": "/api/v1/departments/:departmentId/students",
+        "method": "get",
+        "action": "getStudents",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": ["validatePaginationQuery"]
+    },
+    {
+        "route": "/api/v1/departments",
+        "method": "post",
+        "action": "createDepartment",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": ["validateJsonContentType"]
+    },
+    {
+        "route": "/api/v1/departments/:departmentId",
+        "method": "put",
+        "action": "updateDepartment",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": ["validateJsonContentType"]
+    },
+    {
+        "route": "/api/v1/departments/:departmentId",
+        "method": "delete",
+        "action": "deleteDepartment",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": []
+    },
+    {
+        "route": "/api/v1/departments/:departmentId/restore",
+        "method": "put",
+        "action": "restoreDepartment",
+        "controller": "../components/department/controllers/department-controller.js",
+        "middlewareNameList": ["validateJsonContentType"]
+    },
+    {
+        "route": "/api/v1/students",
+        "method": "get",
+        "action": "getStudents",
+        "controller": "../components/student/controllers/student-controller.js",
+        "middlewareNameList": ["validatePaginationQuery"]
+    },
+    {
+        "route": "/api/v1/students/:studentId",
+        "method": "get",
+        "action": "getStudent",
+        "controller": "../components/student/controllers/student-controller.js",
+        "middlewareNameList": []
+    },
+    {
+        "route": "/api/v1/students",
+        "method": "post",
+        "action": "createStudent",
+        "controller": "../components/student/controllers/student-controller.js",
+        "middlewareNameList": ["validateJsonContentType"]
+    },
+    {
+        "route": "/api/v1/students/:studentId",
+        "method": "put",
+        "action": "updateStudent",
+        "controller": "../components/student/controllers/student-controller.js",
+        "middlewareNameList": ["validateJsonContentType"]
+    },
+    {
+        "route": "/api/v1/students/:studentId",
+        "method": "delete",
+        "action": "deleteStudent",
+        "controller": "../components/student/controllers/student-controller.js",
+        "middlewareNameList": []
+    },
+    {
+        "route": "/api/v1/students/:studentId/restore",
+        "method": "put",
+        "action": "restoreStudent",
+        "controller": "../components/student/controllers/student-controller.js",
+        "middlewareNameList": ["validateJsonContentType"]
+    }
+]
